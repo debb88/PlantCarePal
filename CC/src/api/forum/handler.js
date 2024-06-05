@@ -5,9 +5,9 @@ const crypto = require('crypto');
 const getAllQuestions = async (request, h) => {
     try {
         const questionsSnapshot = await db.collection('forum').get();
-        const questions = [];
-        questionsSnapshot.forEach((doc) => {
-            questions.push({ id: doc.id, ...doc.data() });
+        const questions = questionsSnapshot.docs.map((doc) => {
+            const { username, createdAt, title, question } = doc.data();
+            return { id: doc.id, username, createdAt, title, question };
         });
 
         return { 
@@ -15,7 +15,6 @@ const getAllQuestions = async (request, h) => {
             data: questions,
         };
     } catch (error) {
-        console.error('Error getting questions:', error);
         return h.response({ 
             status: 'error', 
             message: 'Internal Server Error' 
@@ -32,9 +31,9 @@ const getQuestionById = async (request, h) => {
         const questionData = questionDoc.data();
 
         const answersSnapshot = await questionRef.collection('answers').get();
-        const answers = [];
-        answersSnapshot.forEach((doc) => {
-            answers.push({ id: doc.id, ...doc.data() });
+        const answers = answersSnapshot.docs.map((doc) => {
+            const { username, createdAt, answer } = doc.data();
+            return { id: doc.id, username, createdAt, answer };
         });
 
         const questionWithAnswers = {

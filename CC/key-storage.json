@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "plantcarepal-testing",
+  "private_key_id": "9a85b095fee0c9ca9d816e58bdf4059568702ba2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCr+8h4ZyEcshek\n9+mU1EKKdfYsM7PsW/VBUczv7P1XV8Oe3F9V/6zEkqdvLmAGdo9JyaajMJYoImN5\nxp8i8Fwh7u9XyJc7hqtEjJHEZhLhUJSTJuI92+EnUziu0jft4+dISpv7tnzZFiB2\nx94eQygawiTxwZm/wW7JaS5sxI79mEJxtAhlFPNeU+xPpBqXyqSkSkxo792d7b+B\nnT2xKmxEHg1cK5xycGyaRizV/q2Yve5qbETGBSd/Smnuhp8uMIGzh2k7V6YY3sce\nkn5Hw01PqE0SSJRdqMHHLUNTlP376wHcHDGWRi3XXHUttoih+2FzDtpdIjpFtDkR\nOpvemCRVAgMBAAECggEAALO05ETrfi396bb3VZuuL9l+aTzGybqwXBVk5D/P4ujh\nTAczPmsePekpVMtYKf6W5CK2EulyW3SUel1ErgRUI/FROccAUwZgMZXvTGFsR04o\nZRdeCgmZOCtfSltiTg7FlWZ0j4j1pn8wH7v+HJqCkeVj+DallYJJHPpYbao5uTBB\nsZxmfZE4yF37BrXjBA35XyOOZgFOnnGklUrf8QcM92PaRWA6SHp5jdmKok3hlMYD\nsoS2SDSdRtsWLr8WQ/owdBXjKEbjFooGQWTyH8HFhTD9PRHJQh5oTCg+84pTIE+c\n8LT4Emr30A/cYSfPrB42DyFnOw1ZMVWvrpJ5fptzewKBgQDg4xOr2ndoGKFSNFP3\nZyAW4oE5uTnjtfcPW2+3G+d2smtZIWwqoFPSAWOmYO/Lv8dWPV1fqPKUGSRpfP5r\nVchPl3pJVYkz8MVdAbkVKiqbofTXmzNFSgOlluqiA19Ass5fNLi9SK/VrwQWUonW\n7y6L7YQPdkr0DzvzynqkbuOjiwKBgQDDxv/3ISQlvoHlhw9SnkDf855zSR026hsH\nTH+axhOX1salp9khtpcR6akexPQyFplQXm5O8SY2HoDhgBuSDJt2RdViuy1RsF2P\nCQm41PaxtsiUgwWu3l9UHJmdNhtDIxS9JNfxTRIOcG7qkFhnHpM+dzkZ5c7nxaiV\navdow37TnwKBgB3XA60x99YgLoex2dJiJKfktjDqmvvUEUxAXbp2QWhGlGfnP2sI\nixa6iHZzNl5avCB9U/51dHqiO2qj4z5qy4GEH/3LE8GImSeWKvDb/3tXKh3RwiPX\nhlRaihelSuZS039eh4TWOD6qUmiD2zZh1lNK2NMUZy2rN9FJdKyM6jexAoGAP3oJ\nShZrwvUm5sXIuQ/olvRFXrnJCCIVi2NJSGSKu8N+ev2WEDFEgCFTnU9codTj9sP3\nXg8gRZHUVckUp2EBEvMHgdCQnBjj7NmQVmZuaiaKmGR29kDRhdMUF34Qjs8UDVOh\n1HIZtabMv673is/GDA3Z7MSvNkTHKVMaTtR8DZ8CgYEAhBK602UK6Eu4daboZJ9h\nqQqg1TC/pBQLDdKIoSQoNwTc64jUi/NpT79zB5kUV+PjD3Lz2Vu3pWnx/3EP7XQg\nlfVe9dsKS1imbYe57fU/5b4V3sbs+0UmIxhYgyUIUONHOyoeMev/nSlqy2VFwjVI\nNUmZ2TWqV5T2KZ3MV4kjM3Y=\n-----END PRIVATE KEY-----\n",
+  "client_email": "sa-storageimage@plantcarepal-testing.iam.gserviceaccount.com",
+  "client_id": "101679696715195145748",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/sa-storageimage%40plantcarepal-testing.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
