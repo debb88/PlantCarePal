@@ -4,7 +4,7 @@ const InputError = require('../exceptions/InputError');
 async function detectClassification(model, image) {
     try {
         const tensor = tf.node
-            .decodeImage(image, 3)
+            .decodeImage(image._data, 3)
             .resizeNearestNeighbor([150, 150])
             .expandDims()
             .toFloat()
@@ -21,7 +21,6 @@ async function detectClassification(model, image) {
         let treatment;
         let description;
         let causes;
-
 
         if (diseasesName === 'Leaf Spot') {
             description = "Leaf spot is a common fungal or bacterial infection that plagues houseplants. It causes dark spots on the leaves and is encouraged by high humidity and overwatering.";

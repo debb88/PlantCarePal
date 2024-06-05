@@ -56,7 +56,7 @@ const init = async () => {
         if (response.isBoom) {
             const newResponse = h.response({
                 status: 'fail',
-                message: "An error occurred while making the prediction."
+                message: "An error occurred."
             });
             newResponse.code(400);
             return newResponse;

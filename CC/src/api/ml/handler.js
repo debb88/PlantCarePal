@@ -23,7 +23,15 @@ async function postDetect(request, h) {
   const response = h.response({
     status: "success",
     message: "Model is predicted successfully.",
-    data,
+    data: {
+      id,
+      diseasesName,
+      percentage,
+      description,
+      causes,
+      treatment,
+      createdAt,
+    },
   });
   response.code(201);
   return response;
@@ -59,34 +67,25 @@ async function getHistories(request, h) {
 }
 
 async function getHistoryById(request, h) {
-  try {
-    const { id } = request.params;
+  const { id } = request.params;
 
-    const detectRef = db.collection("detections").doc(id);
-    const detectDoc = await detectRef.get();
+  const detectRef = db.collection("detections").doc(id);
+  const detectDoc = await detectRef.get();
 
-    if (detectDoc.empty) {
-      return h
-        .response({
-          status: "fail",
-          message: "History not found.",
-        })
-        .code(404);
-    }
-
-    const detectData = detectDoc.data();
-    return {
-      status: "success",
-      data: detectData,
-    };
-  } catch (error) {
+  if (detectDoc.empty) {
     return h
       .response({
-        status: "error",
-        message: "Internal Server Error",
+        status: "fail",
+        message: "History not found.",
       })
-      .code(500);
+      .code(404);
   }
-};
+
+  const detectData = detectDoc.data();
+  return {
+    status: "success",
+    data: detectData,
+  };
+}
 
 module.exports = { postDetect, getHistories, getHistoryById };

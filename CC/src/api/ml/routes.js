@@ -1,4 +1,3 @@
-const { auth } = require('firebase-admin');
 const detectHandler = require('./handler');
 
 const routes = [
