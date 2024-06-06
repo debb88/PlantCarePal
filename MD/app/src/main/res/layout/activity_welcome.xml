@@ -120,6 +120,8 @@
         android:text="@string/register"
         app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:backgroundTint="@color/softerGreen"
+        android:textColor="@android:color/white"
         />
 
     <Button
@@ -129,6 +131,8 @@
         app:layout_constraintTop_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:text="@string/login"
+        android:backgroundTint="@color/softerGreen"
+        android:textColor="@android:color/white"
         />
 
 
@@ -145,7 +149,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent"
         app:srcCompat="@drawable/ic_circle_24"
-        app:tint="@color/green" />
+        app:tint="@color/softerGreen" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/menu2"
@@ -159,7 +163,7 @@
         app:layout_constraintTop_toTopOf="@+id/menu1"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_circle_24"
-        app:tint="@color/green" />
+        app:tint="@color/softerGreen" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/menu3"
@@ -173,7 +177,7 @@
         app:layout_constraintTop_toTopOf="@+id/menu2"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_circle_24"
-        app:tint="@color/green" />
+        app:tint="@color/softerGreen" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/menu4"
@@ -187,7 +191,7 @@
         app:layout_constraintTop_toTopOf="@+id/menu3"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_circle_24"
-        app:tint="@color/green" />
+        app:tint="@color/softerGreen" />
 
 
 

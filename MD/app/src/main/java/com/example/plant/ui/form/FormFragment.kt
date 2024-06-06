@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.plant.R
 import com.example.plant.databinding.FragmentFormBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class FormFragment : Fragment() {
 
@@ -19,6 +21,7 @@ class FormFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(
@@ -31,14 +34,21 @@ class FormFragment : Fragment() {
 
         // Adapter Initialization
         formAdapter = FormAdapter { form ->
-            // Launch DetailFormActivity with data from clicked item
-            val intent = Intent(context, DetailFormFragment::class.java)
+
+            val intent = Intent(context, DetailFormActivity::class.java)
             intent.putExtra("form", form)
             startActivity(intent)
         }
 
+        //FloatingActionButton Intent
+        val buttonToAdd = binding.addQuestionFloating
+        buttonToAdd.setOnClickListener {
+            val intent = Intent(requireContext(), AddFormActivity::class.java)
+            startActivity(intent)
+        }
+
         // RecyclerView setup
-        binding.recyclerView.apply {
+        binding.questionRecycler.apply {
             adapter = formAdapter
             layoutManager = LinearLayoutManager(context)
         }
@@ -55,5 +65,4 @@ class FormFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

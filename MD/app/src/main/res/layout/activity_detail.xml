@@ -6,13 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.detail.DetailActivity">
-    
+
+
     <ImageView
         android:id="@+id/img_detail"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:scaleType="fitXY"
         app:layout_constraintTop_toTopOf="parent"
+        android:transitionName="img_plant"
         android:src="@drawable/img_detail"/>
 
     <View
@@ -26,7 +28,17 @@
         android:layout_marginBottom="20dp"
         />
 
-
+    <ImageButton
+        android:id="@+id/img_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="92dp"
+        android:backgroundTint="@color/backgroundLoginRegister"
+        android:src="@drawable/ic_back"
+        app:layout_constraintBottom_toTopOf="@+id/banner"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img_detail" />
 
     <TextView
         android:id="@+id/txt_nama"
@@ -36,6 +48,7 @@
         app:layout_constraintTop_toTopOf="@+id/banner"
         app:layout_constraintLeft_toLeftOf="@id/banner"
         app:layout_constraintBottom_toTopOf="@id/txt_percentage"
+        android:transitionName="name"
         android:layout_marginLeft="20dp"
         android:textStyle="bold"
         />
@@ -46,6 +59,7 @@
         android:layout_height="wrap_content"
         android:text="@string/percentage"
         android:layout_marginLeft="20dp"
+        android:transitionName="percentage"
         app:layout_constraintBottom_toBottomOf="@+id/banner"
         app:layout_constraintLeft_toLeftOf="@+id/banner"
         app:layout_constraintTop_toBottomOf="@+id/txt_nama"

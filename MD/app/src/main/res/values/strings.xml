@@ -37,7 +37,6 @@
         <item>dd-mm-yyyy</item>
         <item>dd-mm-yyyy</item>
     </string-array>
-
     <string-array name="desc_disease">
         <item>ini deskripsi penyakit</item>
         <item>ini deskripsi penyakit</item>
@@ -55,11 +54,26 @@
         <item>@drawable/tanaman</item>
         <item>@drawable/tanaman</item>
     </integer-array>
+
+    <integer-array name="data_guidance_photo">
+        <item>@drawable/img_guidance</item>
+        <item>@drawable/img_guidance</item>
+        <item>@drawable/img_guidance</item>
+    </integer-array>
+
+    <string-array name="data_title_guidance">
+        <item>Panduan Memilih Pestisida yang Aman dan Efektif untuk Mengatasi Hama dan Penyakit</item>
+        <item>Panduan Memilih Pestisida yang Aman dan Efektif untuk Mengatasi Hama dan Penyakit</item>
+        <item>Panduan Memilih Pestisida yang Aman dan Efektif untuk Mengatasi Hama dan Penyakit</item>
+    </string-array>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="titleAddForm">Ask Your Question!</string>
+
+    <string name="title_detail_guide">Panduan Memilih Pestisida yang Aman dan Efektif untuk Mengatasi Hama dan Penyakit</string>
 
     <string name="welcomeRegister">Create Account</string>
     <string name="hintLogin">Already Have An Account?</string>
@@ -71,7 +85,18 @@
     <string name="Description">Description</string>
     <string name="causes">Causes</string>
     <string name="treatment">Treatment</string>
+    <string name="guidance">Guidance</string>
+    <string name="title_guidance">this is title</string>
     <string name="Content">
         It is a long established fact that a reader will be distracted bythe readable content of a page when looking at its layout. The point of  using Lorem Ipsum is that it has a more-or-less normal distribution of  letters, as opposed to using \'Content here, content here\', making it  look like readable English. Many desktop publishing packages and web  page editors now use Lorem Ipsum as their default model text, and a  search for \'lorem ipsum\' will uncover many web sites still in their  infancy. Various versions have evolved over the years, sometimes by  accident, sometimes on purpose (injected humour and the like).
     </string>
+    <string name="comment">Comment Goes Here\n</string>
+    <string name="questionDetail">Question goes Here</string>
+    <string name="discussion_forum">Discussion Forum</string>
+    <string name="commentEditText">Comment</string>
+    <string name="seeall">SeeAll</string>
+    <string name="step1">Step1</string>
+    <string name="step2">Step2</string>
+    <string name="content_detail_guide">It is a long established fact that a reader will be distracted by  the readable content of a page when looking at its layout. </string>
+
 </resources>
