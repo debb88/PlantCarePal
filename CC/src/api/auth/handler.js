@@ -58,9 +58,12 @@ const login = async (request, h) => {
         const user = { id: userData.id };
         const token = jwt.sign({ user }, "my_secret_key");
 
-        return { token };
+        return h.response({ 
+            status: 'success',
+            message: 'User login successfully.',
+            token 
+        }).code(201);
     } catch (error) {
-        console.error('Error during login:', error);
         return h.response({ 
             status: 'error', 
             message: 'Internal Server Error' 
