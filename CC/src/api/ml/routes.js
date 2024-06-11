@@ -28,6 +28,12 @@ const routes = [
         handler: detectHandler.getHistoryById,
         options: { auth: 'jwt' }
     },
+    {
+        path: '/detect/histories/{id}',
+        method: 'DELETE',
+        handler: detectHandler.deleteHistory,
+        options: { auth: 'jwt' }
+    },
 ];
 
 module.exports = routes;

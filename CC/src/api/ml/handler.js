@@ -82,7 +82,7 @@ async function getHistories(request, h) {
     const userId = decoded.user.id;
 
     const historyCollection = db.collection("detections");
-    const snapshot = await historyCollection.where('userId', '==', userId).get();
+    const snapshot = await historyCollection.where('userId', '==', userId).orderBy('createdAt', 'desc').get();
 
     if (snapshot.empty) {
       return h.response({
@@ -140,4 +140,34 @@ async function getHistoryById(request, h) {
   }
 }
 
-module.exports = { postDetect, getHistories, getHistoryById };
+async function deleteHistory(request, h) {
+  try {
+    const { id } = request.params;
+
+    const detectRef = db.collection("detections").doc(id);
+    const detectDoc = await detectRef.get();
+
+    if (!detectDoc.exists) {
+      return h.response({
+        status: "fail",
+        message: "History not found.",
+      }).code(404);
+    }
+
+    await detectRef.delete();
+
+    return h.response({
+      status: "success",
+      message: "History deleted successfully.",
+    }).code(200);
+
+  } catch (error) {
+    return h.response({
+      status: 'error',
+      message: 'Internal server error'
+    }).code(500);
+  }
+}
+
+
+module.exports = { postDetect, getHistories, getHistoryById, deleteHistory };
