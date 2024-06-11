@@ -169,5 +169,40 @@ async function deleteHistory(request, h) {
   }
 }
 
+async function deleteAllHistories(request, h) {
+  try {
+    const token = request.headers.authorization.split(' ')[1];
+    const decoded = jwt.verify(token, 'my_secret_key');
+    const userId = decoded.user.id;
 
-module.exports = { postDetect, getHistories, getHistoryById, deleteHistory };
+    const historyCollection = db.collection("detections");
+    const snapshot = await historyCollection.where('userId', '==', userId).get();
+
+    if (snapshot.empty) {
+      return h.response({
+        status: "fail",
+        message: "No history to delete.",
+      }).code(404);
+    }
+
+    const batch = db.batch();
+    snapshot.docs.forEach(doc => {
+      batch.delete(doc.ref);
+    });
+
+    await batch.commit();
+
+    return h.response({
+      status: "success",
+      message: "All histories deleted successfully.",
+    }).code(200);
+
+  } catch (error) {
+    return h.response({
+      status: 'error',
+      message: 'Internal server error'
+    }).code(500);
+  }
+}
+
+module.exports = { postDetect, getHistories, getHistoryById, deleteHistory, deleteAllHistories };

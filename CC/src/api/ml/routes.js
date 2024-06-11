@@ -34,6 +34,12 @@ const routes = [
         handler: detectHandler.deleteHistory,
         options: { auth: 'jwt' }
     },
+    {
+        path: '/detect/histories',
+        method: 'DELETE',
+        handler: detectHandler.deleteAllHistories,
+        options: { auth: 'jwt' }
+    },
 ];
 
 module.exports = routes;
