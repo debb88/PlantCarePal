@@ -1,7 +1,7 @@
 const detectClassification = require("../../ml/detect");
 const crypto = require("crypto");
 const db = require("../../config/db");
-const { storeImage } = require("../../config/storage");
+const { storeImage, deleteImage } = require("../../config/storage");
 const jwt = require('jsonwebtoken');
 
 async function postDetect(request, h) {
@@ -36,6 +36,13 @@ async function postDetect(request, h) {
         message: 'Error classifying image'
       }).code(500);
     });
+
+    if (diseasesName === 'Not Leaf') {
+      return h.response({
+        status: 'fail',
+        message: 'This image is not identified as a leaf. Please provide a valid leaf image.',
+      }).code(400);
+    }
     
     const createdAt = new Date().toISOString();
 
@@ -154,7 +161,11 @@ async function deleteHistory(request, h) {
       }).code(404);
     }
 
+    const detectData = detectDoc.data();
+    const imageUrl = detectData.imageUrl;
+
     await detectRef.delete();
+    await deleteImage(imageUrl);
 
     return h.response({
       status: "success",
@@ -186,11 +197,18 @@ async function deleteAllHistories(request, h) {
     }
 
     const batch = db.batch();
+    const imageUrls = [];
+
     snapshot.docs.forEach(doc => {
+      const detectData = doc.data();
+      const imageUrl = detectData.imageUrl;
+      imageUrls.push(imageUrl);
       batch.delete(doc.ref);
     });
 
     await batch.commit();
+
+    await Promise.all(imageUrls.map(url => deleteImage(url)));
 
     return h.response({
       status: "success",

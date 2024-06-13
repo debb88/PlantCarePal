@@ -30,4 +30,18 @@ async function storeImage(image, id) {
   });
 }
 
-module.exports = { storeImage };
+async function deleteImage(imageUrl) {
+  try {
+    const bucket = storage.bucket(bucketName);
+    const fileName = imageUrl.split(`https://storage.googleapis.com/${bucketName}/`)[1];
+    const file = bucket.file(fileName);
+
+    await file.delete();
+
+    return true;
+  } catch (error) {
+    throw new Error(`Failed to delete image from storage: ${error.message}`);
+  }
+}
+
+module.exports = { storeImage, deleteImage };

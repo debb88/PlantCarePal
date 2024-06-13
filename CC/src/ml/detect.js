@@ -10,12 +10,12 @@ async function detectClassification(model, image) {
             .toFloat()
             .div(tf.scalar(255));
 
-        const classes = ['Leaf Spot', 'Powdery Mildew', 'Rust Leaf'];
+        const classes = ['Leaf Spot', 'Powdery Mildew', 'Rust Leaf', 'Not Leaf'];
 
         const prediction = model.predict(tensor);
         const score = await prediction.data();
 
-        const classResult = score[0] > 0.5 ? 0 : 1;
+        const classResult = score.indexOf(Math.max(...score));
         const percentage = Math.max(...score) * 100;
         const diseasesName = classes[classResult];
         let treatment;
