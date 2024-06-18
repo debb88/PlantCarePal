@@ -41,3 +41,15 @@ PlantCarePal is
 
 # Installing PlantCarePale API Server
 These are the steps in installing PlantCarePal API
+
+## Install Requirements
+[Node.js and NPM]()
+
+## Run API Locally
+
+# How to Deploy to Google Cloud (Cloud Run)
+##Requirements
+
+# PlantCarePal API Reference
+
+
