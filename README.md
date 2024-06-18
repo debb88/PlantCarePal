@@ -50,6 +50,8 @@ These are the steps in installing PlantCarePal API
 # How to Deploy to Google Cloud (Cloud Run)
 ## Requirements
 
+<br>
+
 # PlantCarePal API Reference
 
 
