@@ -1,5 +1,7 @@
 <div align="center">
+  
 # PlantCarePal
+
 </div>
 
 PlantCarePal is
