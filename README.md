@@ -22,7 +22,7 @@ PlantCarePal is
 
 </div>
 
-# Screenshots
+## Screenshots
 
 <div align="center">
 
@@ -36,8 +36,8 @@ PlantCarePal is
 
 </div>
 
-# UI/UX
+## UI/UX
 [PlantCarePal UI Design](https://www.figma.com/design/qSRxvICZxb3N3lFodDNiRN/Mockup-Capstone?node-id=0-1&t=N2cDs5MrmuClcNSu-1)
 
-## Installing PlantCarePale API Server
+# Installing PlantCarePale API Server
 These are the steps in installing PlantCarePal API
