@@ -1,7 +1,12 @@
+<div align="center">
 # PlantCarePal
+</div>
+
 PlantCarePal is
 
+
 ## PlantCarePal Teams - C241-PS497
+<div align="center">
 | Nama | Path | Bangkit ID | Social Media |
 |---------|---------|---------|---------|
 | Rio Rezky Seleng | Machine Learning  | M004D4KY2871  | Data 3  |
@@ -11,3 +16,4 @@ PlantCarePal is
 | BMuhammad Naufalaudi Syaliandra | Cloud Computing | C006D4KY0154 | Data 15 |
 | Andreas Matthew | Mobile Development | A242D4KY3968 | Data 18 |
 | Willyam | Mobile Development | A242D4KY4312 | Data 21 |
+</div>
