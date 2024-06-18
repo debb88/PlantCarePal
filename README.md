@@ -30,9 +30,12 @@ PlantCarePal is
 |---------|---------|---------|---------|---------|
 |  |   |   |   |
 
-| Splash Screen | Opening Page | Register Page | Login Page | Home Page |
+| Detect Page | Analyze Result Page | History Page | Guides Page | Guide Detail Page |
 |---------|---------|---------|---------|---------|
 |  |   |   |   |
 
 </div>
+
+# UI/UX
+[PlantCarePal UI Design](https://www.figma.com/design/qSRxvICZxb3N3lFodDNiRN/Mockup-Capstone?node-id=0-1&t=N2cDs5MrmuClcNSu-1)
 
