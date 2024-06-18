@@ -30,5 +30,9 @@ PlantCarePal is
 |---------|---------|---------|---------|---------|
 |  |   |   |   |
 
+| Splash Screen | Opening Page | Register Page | Login Page | Home Page |
+|---------|---------|---------|---------|---------|
+|  |   |   |   |
+
 </div>
 
