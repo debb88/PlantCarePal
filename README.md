@@ -21,3 +21,14 @@ PlantCarePal is
 | Willyam | Mobile Development | A242D4KY4312 | Data 21 |
 
 </div>
+
+# Screenshots
+
+<div align="center">
+
+| Splash Screen | Opening Page | Register Page | Login Page | Home Page |
+|---------|---------|---------|---------|---------|
+|  |   |   |   |
+
+</div>
+
