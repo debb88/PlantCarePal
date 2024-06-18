@@ -55,5 +55,5 @@ These are the steps in installing PlantCarePal API
 <br>
 
 # PlantCarePal API Reference
-
+``` auth/ ```
 
