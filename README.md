@@ -68,13 +68,14 @@ These are the steps in installing PlantCarePal API
 ``` detect
 /detect
 ```
-| Endpoint | Method | Parameter | Type | Description |
-|---------|---------|---------|---------|---------|
-| /detect | POST | ``` multipart/form-data ```  | ``` File ```  |  Detects diseases in an uploaded image. Requires JWT token for authentication.  |
-| /detect/histories |  GET | -  |  - | Retrieves all detection histories for the authenticated user. Requires JWT token for authentication.  |
-| /detect/histories/{id}  | GET    | `?id=<id>`                         | `String`           | Retrieves a specific detection history by ID. Requires JWT token for authentication. |
-| /detect/histories/{id}  | DELETE | `?id=<id>`                         | `String`           | Deletes a specific detection history by ID. Requires JWT token for authentication. |
-| /detect/histories       | DELETE | -                            | -                  | Deletes all detection histories for the authenticated user. Requires JWT token for authentication. |
+| Endpoint                  | Method | Payload                   | Description |
+|---------------------------|--------|---------------------------|-------------|
+| /detect                   | POST   | `multipart/form-data`     | This endpoint is used to detect diseases in an uploaded image. It requires a JWT token for authentication. The payload should include an image file (`File`). |
+| /detect/histories         | GET    | -                         | This endpoint retrieves all detection histories for the authenticated user. It requires a JWT token for authentication. |
+| /detect/histories/{id}    | GET    | -                         | This endpoint retrieves a specific detection history by ID (`id`). It requires a JWT token for authentication. |
+| /detect/histories/{id}    | DELETE | -                         | This endpoint deletes a specific detection history by ID (`id`). It requires a JWT token for authentication. |
+| /detect/histories         | DELETE | -                         | This endpoint deletes all detection histories for the authenticated user. It requires a JWT token for authentication. |
+
 
 ### Forum
 ```forum
