@@ -104,7 +104,7 @@ These are the steps in installing PlantCarePal API
    ```sh
    gcloud artifacts repositories create [REPOSITORY_NAME] --repository-format=docker --location=asia-southeast2 --async
    ```
-   For "location" you can change it according to your needs. In this project, I use the location asia-southeast2
+   For "location" you can change it according to your needs. In this project, We use the location asia-southeast2
 
 6. **Build and push the Docker image**
    ```sh
