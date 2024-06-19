@@ -61,7 +61,11 @@ These are the steps in installing PlantCarePal API
 | /register | POST | ``` application/json ```  | ``` String ```  |    |
 | /login |  POST | ``` application/json ```  |  ``` String ``` |   |
 
-## Detect
+### Detect
 ``` detect
 /detect
 ```
+| Endpoint | Method | Parameter | Type | Description |
+|---------|---------|---------|---------|---------|
+| /detect | POST | ``` multipart/form-data ```  | ``` byte[] ```  |    |
+| /detect/histories |  GET | -  |  - |   |
