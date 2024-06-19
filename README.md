@@ -52,13 +52,23 @@ These are the steps in installing PlantCarePal API
 <br>
 
 # How to Deploy to Google Cloud (Cloud Run)
-## Requirements
-1. **Google Cloud Account**: Daftar [di sini](https://cloud.google.com/).
-2. **Google Cloud SDK**: Install dari [sini](https://cloud.google.com/sdk/docs/install).
-3. **Docker**: Install Docker dari [sini](https://docs.docker.com/get-docker/).
+## Prerequisites
+1. **Google Cloud Account**: [Daftar](https://cloud.google.com/).
+2. **Google Cloud SDK**: [Install](https://cloud.google.com/sdk/docs/install).
+3. **Docker**: [Install Docker](https://docs.docker.com/get-docker/).
+4. 4. **Google Cloud Storage and Firestore**:
+   - **Enable Cloud Storage API**: 
+     ```sh
+     gcloud services enable storage.googleapis.com
+     ```
+   - **Enable Firestore API**:
+     ```sh
+     gcloud services enable firestore.googleapis.com
+     ```
+
 
 <br>
-
+Install Docker
 # PlantCarePal API Reference
 ### Authentication
 | Endpoint   | Method | Payload                   | Description |
