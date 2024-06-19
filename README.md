@@ -83,10 +83,20 @@ These are the steps in installing PlantCarePal API
 ```
 | Endpoint                  | Method | Payload                   | Description |
 |---------------------------|--------|---------------------------|-------------|
-| `/forum`                  | GET    | -                         | This endpoint retrieves all questions posted in the forum. It requires a JWT token for authentication. |
-| `/forum/{id}`             | GET    | -                         | This endpoint retrieves a specific question by ID from the forum. It requires a JWT token for authentication. |
-| `/forum`                  | POST   | `application/json`        | This endpoint posts a new question in the forum. It requires a JWT token for authentication. The payload should be a JSON object containing `title` and `question`. |
-| `/forum/{id}/answers`     | POST   | `application/json`        | This endpoint posts an answer to a specific question in the forum. It requires a JWT token for authentication. The payload should be a JSON object containing `answer`. |
+| /forum                  | GET    | -                         | This endpoint retrieves all questions posted in the forum. It requires a JWT token for authentication. |
+| /forum/{id}             | GET    | -                         | This endpoint retrieves a specific question by ID from the forum. It requires a JWT token for authentication. |
+| /forum                  | POST   | `application/json`        | This endpoint posts a new question in the forum. It requires a JWT token for authentication. The payload should be a JSON object containing `title` and `question`. |
+| /forum/{id}/answers     | POST   | `application/json`        | This endpoint posts an answer to a specific question in the forum. It requires a JWT token for authentication. The payload should be a JSON object containing `answer`. |
+
+
+### Guides
+```guide
+/guides
+```
+| Endpoint          | Method | Payload            | Description |
+|-------------------|--------|--------------------|-------------|
+| /guides         | GET    | -                  | This endpoint retrieves all available guides. Authentication with a JWT token is required. |
+| /guides/{id}    | GET    | -                  | This endpoint retrieves a specific guide by its ID. Authentication with a JWT token is required. |
 
 
 
