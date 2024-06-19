@@ -28,11 +28,11 @@ PlantCarePal is
 
 | Splash Screen | Opening Page | Register Page | Login Page | Home Page |
 |---------|---------|---------|---------|---------|
-|  |   |   |   |
+|  |   |   |   |   |
 
 | Detect Page | Analyze Result Page | History Page | Guides Page | Guide Detail Page |
 |---------|---------|---------|---------|---------|
-|  |   |   |   |
+|  |   |   |   |   |
 
 </div>
 
@@ -55,8 +55,8 @@ These are the steps in installing PlantCarePal API
 <br>
 
 # PlantCarePal API Reference
-``` auth/ ```
-
-``` auth
-auth/
-```
+## Authentication
+| Endpoint | Method | Parameter | Type | Description |
+|---------|---------|---------|---------|---------|
+| /register | POST | ``` application/json ```  | String  |   |
+| /login |  POST | ``` application/json ```  |  String |   |
