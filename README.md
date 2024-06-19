@@ -58,4 +58,5 @@ These are the steps in installing PlantCarePal API
 ``` auth/ ```
 
 ``` auth
-
+auth/
+```
