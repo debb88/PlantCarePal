@@ -79,11 +79,50 @@ These are the steps in installing PlantCarePal API
    
 3. **Enable necessary APIs**
    ```sh
-   gcloud services enable cloudbuild.googleapis.com run.googleapis.com
+   gcloud services enable artifactregistry.googleapis.com cloudbuild.googleapis.com run.googleapis.com
    ```
-4. 
+   
+4. **Clone the repository (if you haven't already)**
+   ```sh
+   git clone https://github.com/[YOUR_GITHUB_USERNAME]/[YOUR_REPOSITORY].git
+   ```
+   ```sh
+   cd [YOUR_REPOSITORY]
+   ```
+   Make sure your repository already has a "Dockerfile" file, like this:
+   ```sh
+   FROM node:20
+   WORKDIR /app
+   ENV PORT [PORT]
+   COPY . .
+   RUN npm install
+   EXPOSE [PORT]
+   CMD [ "npm", "run", "start"]
+   ```
+   
+5. **Create an Artifact Registry**
+   ```sh
+   gcloud artifacts repositories create [REPOSITORY_NAME] --repository-format=docker --location=asia-southeast2 --async
+   ```
+   For "location" you can change it according to your needs. In this project, I use the location asia-southeast2
 
+6. **Build and push the Docker image**
+   ```sh
+   gcloud builds submit --tag asia-southeast2-docker.pkg.dev/${GOOGLE_CLOUD_PROJECT}/[REPOSITORY_NAME]/[IMAGE_NAME]:[TAG]
+   ```
+   Replace ${GOOGLE_CLOUD_PROJECT} with your project ID, [REPOSITORY_NAME] with the repository name you want, [IMAGE_NAME] with the image name, and [TAG] with the appropriate tag.
 
+7. **Deploy to Cloun Run**
+   ```sh
+   gcloud run deploy [YOUR_SERVICE_NAME] \
+    --image asia-southeast2-docker.pkg.dev/${GOOGLE_CLOUD_PROJECT}/[REPOSITORY_NAME]/[IMAGE_NAME]:[TAG] \
+    --platform managed \
+    --region [YOUR_REGION] \
+    --allow-unauthenticated
+   ```
+   Replace [YOUR_SERVICE_NAME] with the name of the service you want, ${GOOGLE_CLOUD_PROJECT} with your project ID, [REPOSITORY_NAME] with the name of the repository, [IMAGE_NAME] with the name of the image, [TAG] with the tag, and [YOUR_REGION] with the region where you want to deposit application (for example, us-central1).
+
+   
 <br>
 
 # PlantCarePal API Reference
