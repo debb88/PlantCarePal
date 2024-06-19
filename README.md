@@ -74,7 +74,7 @@ These are the steps in installing PlantCarePal API
 
 
 <br>
-Install Docker
+
 # PlantCarePal API Reference
 ### Authentication
 | Endpoint   | Method | Payload                   | Description |
