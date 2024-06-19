@@ -16,7 +16,7 @@ PlantCarePal is a Mobile App that is for users who are interested in decorative 
 | Mohd Alfitra Syauqi | Machine Learning  | M006D4KY2753  | Data 6  |
 | Virandy Bagaskara Syahwanto | Machine Learning  | M006D4KY1786  | Data 9  |
 | Debora Meiliana | Cloud Computing | C242D4KX1012 | Data 12 |
-| BMuhammad Naufalaudi Syaliandra | Cloud Computing | C006D4KY0154 | [LinkedIn](https://www.linkedin.com/in/naufalsyaliandra/) & [GitHub](https://github.com/naufalliandra) |
+| Muhammad Naufalaudi Syaliandra | Cloud Computing | C006D4KY0154 | [LinkedIn](https://www.linkedin.com/in/naufalsyaliandra/) & [GitHub](https://github.com/naufalliandra) |
 | Andreas Matthew | Mobile Development | A242D4KY3968 | Data 18 |
 | Willyam | Mobile Development | A242D4KY4312 | Data 21 |
 
