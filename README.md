@@ -65,12 +65,23 @@ These are the steps in installing PlantCarePal API
      ```sh
      gcloud services enable firestore.googleapis.com
      ```
-## Deploy with SDK to Cloud Run
+## Deploy to Cloud Run with SDK
 1. **Authenticate with Google Cloud**:
    ```sh
    gcloud auth login
+   ```
    
-2. 
+2. **Set Google Cloud project**
+   ```sh
+   gcloud config set project [YOUR_PROJECT_ID]
+   ```
+   Replace [YOUR_PROJECT_ID] with your Google Cloud project ID.
+   
+3. **Enable necessary APIs**
+   ```sh
+   gcloud services enable cloudbuild.googleapis.com run.googleapis.com
+   ```
+4. 
 
 
 <br>
