@@ -22,6 +22,8 @@ PlantCarePal is a Mobile App that is for users who are interested in decorative 
 
 </div>
 
+<br>
+
 ## Screenshots
 
 <div align="center">
@@ -36,23 +38,25 @@ PlantCarePal is a Mobile App that is for users who are interested in decorative 
 
 </div>
 
+<br>
+
 ## UI/UX
 [PlantCarePal UI Design](https://www.figma.com/design/qSRxvICZxb3N3lFodDNiRN/Mockup-Capstone?node-id=0-1&t=N2cDs5MrmuClcNSu-1)
 
 <br>
 
-# Installing PlantCarePale API Server
+## Installing PlantCarePale API Server
 These are the steps in installing PlantCarePal API
 
-## Install Requirements
+### Install Requirements
 [Node.js and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
-## Run API Locally
+### Run API Locally
 
 <br>
 
-# How to Deploy to Google Cloud (Cloud Run)
-## Prerequisites
+## How to Deploy to Google Cloud (Cloud Run)
+### Prerequisites
 1. **Google Cloud Account**: [Daftar](https://cloud.google.com/).
 2. **Google Cloud SDK**: [Install](https://cloud.google.com/sdk/docs/install).
 3. **Docker**: [Install Docker](https://docs.docker.com/get-docker/).
@@ -65,7 +69,7 @@ These are the steps in installing PlantCarePal API
      ```sh
      gcloud services enable firestore.googleapis.com
      ```
-## Deploy to Cloud Run with SDK
+### Deploy to Cloud Run with SDK
 1. **Authenticate with Google Cloud**:
    ```sh
    gcloud auth login
@@ -126,7 +130,7 @@ These are the steps in installing PlantCarePal API
    
 <br>
 
-# PlantCarePal API Reference
+## PlantCarePal API Reference
 ### Authentication
 | Endpoint   | Method | Payload                   | Description |
 |------------|--------|---------------------------|-------------|
