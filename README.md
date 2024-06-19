@@ -60,8 +60,8 @@ These are the steps in installing PlantCarePal API
 ### Authentication
 | Endpoint | Method | Parameter | Type | Description |
 |---------|---------|---------|---------|---------|
-| /register | POST | ``` application/json ```  | ``` String ```  |    |
-| /login |  POST | ``` application/json ```  |  ``` String ``` |   |
+| /register | POST | ``` application/json ```  | ``` String ```  |  This endpoint is used for registering a new user. The payload contains fields for username and password. When you fill out the payload and send the request to the server, the server will respond with a 201 Created status if the registration is successful, or a 409 Conflict status if the username already exists.  |
+| /login |  POST | ``` application/json ```  |  ``` String ``` | This endpoint is used for user login. The payload contains fields for username and password. You can fill the username field with either the username or email. After filling the payload and sending the request to the server, the server will respond with a 201 Created status if the login is successful, and the response will contain a token. If the username or password is incorrect, the server will respond with a 400 Bad Request status.  |
 
 ### Detect
 ``` detect
