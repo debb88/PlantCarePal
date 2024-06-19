@@ -1,16 +1,28 @@
 package com.example.plant.ui.history
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
+import android.view.Window
+import android.widget.Button
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.plant.ListHistory
 import com.example.plant.R
+import com.example.plant.ViewModelFactory
 import com.example.plant.databinding.FragmentHistoryBinding
+import com.example.plant.pref.DataStoreViewModel
+import com.example.plant.pref.UserPreference
+import com.example.plant.pref.dataStore
+import com.example.plant.ui.network.response.DataItem
+import io.github.muddz.styleabletoast.StyleableToast
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +40,18 @@ HistoryFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private val lifecycleObserver = object : LifecycleObserver {
+
+        @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+        fun onDestroy() {
+            dialog?.dismiss()
+        }
+    }
+
+    private var dialog: Dialog? = null
+
     private var _binding: FragmentHistoryBinding? = null
+    private lateinit var deleteViewModel : DeleteViewModel
 
     private val binding get() = _binding!!
 
@@ -38,21 +61,98 @@ HistoryFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        lifecycle.addObserver(object : LifecycleObserver {
+            @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+            fun onDestroy() {
+                dialog?.dismiss()
+            }
+        })
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val historyViewModel = ViewModelProvider(this).get(HistoryViewModel::class.java)
+        val deleteViewModel = ViewModelProvider(this).get(DeleteViewModel::class.java)
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
 
-        historyViewModel.setHistory(setListHistories())
+        val pref = UserPreference.getInstance(requireContext().applicationContext.dataStore)
+        val datastoreViewModel = ViewModelProvider(this, ViewModelFactory(pref)).get(
+            DataStoreViewModel::class.java)
+
+        datastoreViewModel.getTokenKey().observe(viewLifecycleOwner){
+            historyViewModel.getHistoryList(it)
+        }
+
+        historyViewModel.historyList.observe(viewLifecycleOwner) { historyList ->
+            binding.emptyFormCondition.visibility = if (historyList.isNullOrEmpty()) View.VISIBLE else View.GONE
+            binding.rvHistory.visibility = if (historyList.isNullOrEmpty()) View.GONE else View.VISIBLE
+
+            (binding.rvHistory.adapter as? HistoryAdapter)?.submitList(historyList)
+        }
+
+        historyViewModel.isLoading.observe(viewLifecycleOwner){
+            val item = binding.rvHistory.adapter?.itemCount
+            if(item == null){
+                showLoading(it)
+            }
+        }
+
+        deleteViewModel.isClickId.observe(viewLifecycleOwner){
+            if(it){
+                showDialog(deleteViewModel)
+                deleteViewModel.dialoResult.observe(viewLifecycleOwner){dial->
+                    if(dial){
+                        datastoreViewModel.getTokenKey().observe(viewLifecycleOwner){token->
+                            deleteViewModel.idDelete.observe(viewLifecycleOwner){idDel->
+                                deleteViewModel.deleteHisotrybyId(token, idDel)
+                            }
+                        }
+                        deleteViewModel.setDialogResult(false)
+                    }
+                }
+            }
+
+        }
+
+        binding.btnClear.setOnClickListener {
+            showDialog(deleteViewModel)
+            deleteViewModel.dialoResult.observe(viewLifecycleOwner){dial->
+                if(dial){
+                    datastoreViewModel.getTokenKey().observe(viewLifecycleOwner){token->
+                        deleteViewModel.deleteAllHistory(token )
+                    }
+                    deleteViewModel.setDialogResult(false)
+                }
+            }
+        }
+
+        deleteViewModel.isSuccess.observe(viewLifecycleOwner){
+            if(it){
+                StyleableToast.makeText(requireContext(), "Success to delete history", R.style.exampleToast).show()
+                datastoreViewModel.getTokenKey().observe(viewLifecycleOwner){token->
+                    historyViewModel.getHistoryList(token)
+                }
+            }else{
+                StyleableToast.makeText(requireContext(), "Failed to delete", R.style.errorToast).show()
+            }
+        }
 
         historyViewModel.historyList.observe(viewLifecycleOwner) {
-            showRecyclerList(it)
+            if (it != null) {
+                showRecyclerList(it)
+            }else{
+                val listnull : List<DataItem>? = null
+                showRecyclerList(listnull)
+            }
         }
+
+        deleteViewModel.isLoading.observe(viewLifecycleOwner){
+            showLoading(it)
+        }
+
 
         val root : View = binding.root
 
@@ -61,25 +161,55 @@ HistoryFragment : Fragment() {
         return root
     }
 
-    private fun setListHistories() : ArrayList<ListHistory>{
-        val dataName = resources.getStringArray(R.array.name_disease)
-        val dataDesc = resources.getStringArray(R.array.desc_disease)
-        val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
-        val dataPercentage = resources.getStringArray(R.array.percentage)
-        val dataTime = resources.getStringArray(R.array.date_history)
-        val listHistory = ArrayList<ListHistory>()
-        for(i in dataName.indices){
-            val history = ListHistory(dataName[i], dataDesc[i], dataPercentage[i], dataTime[i], dataPhoto.getResourceId(i,-1))
-            listHistory.add(history)
-        }
-        return listHistory
-    }
 
-    private fun showRecyclerList(list:ArrayList<ListHistory>){
+    private fun showRecyclerList(list:List<DataItem>?){
         binding.rvHistory.layoutManager = LinearLayoutManager(requireContext())
-        val listHistoryAdapter = HistoryAdapter()
+        val listHistoryAdapter = HistoryAdapter(this, true)
         listHistoryAdapter.submitList(list)
         binding.rvHistory.adapter =listHistoryAdapter
+    }
+
+    private fun showDialog(delViewModel: DeleteViewModel){
+        if (!isAdded || activity == null || isRemoving || isDetached) {
+            return
+        }
+
+        val dialog = Dialog(requireContext()).apply {
+            requestWindowFeature(Window.FEATURE_NO_TITLE)
+            setContentView(R.layout.dialogconfirm)
+            setCancelable(false)
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        }
+
+        val btnYes : Button = dialog.findViewById(R.id.btn_yes)
+        val btnNo: Button = dialog.findViewById(R.id.btn_No)
+
+
+        btnYes.setOnClickListener {
+            delViewModel.setIsClickId(false)
+            delViewModel.setDialogResult(true)
+            dialog.dismiss()
+        }
+
+        btnNo.setOnClickListener {
+            delViewModel.setIsClickId(false)
+            delViewModel.setDialogResult(false)
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        lifecycle.removeObserver(lifecycleObserver)
+        dialog?.dismiss()
     }
 
     companion object {
@@ -100,6 +230,8 @@ HistoryFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+
+        const val TAG = "HistoryFragmet"
     }
 }
 

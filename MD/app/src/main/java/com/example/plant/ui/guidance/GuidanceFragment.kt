@@ -10,9 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.plant.ListGuidance
 import com.example.plant.ListHistory
 import com.example.plant.R
+import com.example.plant.ViewModelFactory
 import com.example.plant.databinding.FragmentGuidanceBinding
 import com.example.plant.databinding.FragmentHistoryBinding
+import com.example.plant.pref.DataStoreViewModel
+import com.example.plant.pref.UserPreference
+import com.example.plant.pref.dataStore
 import com.example.plant.ui.history.HistoryAdapter
+import com.example.plant.ui.network.response.DataGuide
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,12 +49,22 @@ class GuidanceFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val guidanceViewModel = ViewModelProvider(this).get(GuidanceViewModel::class.java)
         _binding = FragmentGuidanceBinding.inflate(inflater, container, false)
+        showLoading(true)
+        val pref = UserPreference.getInstance(requireContext().applicationContext.dataStore)
+        val datastoreViewModel = ViewModelProvider(this, ViewModelFactory(pref)).get(
+            DataStoreViewModel::class.java)
 
-        guidanceViewModel.setGuidance(setListGuidance())
+        datastoreViewModel.getTokenKey().observe(viewLifecycleOwner){
+            guidanceViewModel.getGuidanceList(it)
+        }
+
+        guidanceViewModel.isLoading.observe(viewLifecycleOwner){
+            showLoading(it)
+        }
 
         guidanceViewModel.guidanceList.observe(viewLifecycleOwner){
             showRecyclerList(it)
@@ -60,19 +75,15 @@ class GuidanceFragment : Fragment() {
         return root
     }
 
-    private fun setListGuidance(): ArrayList<ListGuidance>{
-        val dataTitle = resources.getStringArray(R.array.data_title_guidance)
-        val dataTime = resources.getStringArray(R.array.date_history)
-        val dataPhoto = resources.obtainTypedArray(R.array.data_guidance_photo)
-        val listGuidance = ArrayList<ListGuidance>()
-        for(i in dataTitle.indices){
-            val guidance = ListGuidance(dataTitle[i], dataTime[i], dataPhoto.getResourceId(i,-1))
-            listGuidance.add(guidance)
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
         }
-        return listGuidance
     }
 
-    private fun showRecyclerList(list: ArrayList<ListGuidance>){
+    private fun showRecyclerList(list: List<DataGuide?>?){
         binding.rvGuidance.layoutManager = LinearLayoutManager(requireContext())
         val listGuidanceAdapter = GuidanceAdapter()
         listGuidanceAdapter.submitList(list)

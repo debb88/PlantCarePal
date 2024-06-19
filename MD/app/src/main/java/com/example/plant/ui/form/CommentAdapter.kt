@@ -1,33 +1,59 @@
 package com.example.plant.ui.form
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.plant.R
-import com.example.plant.ui.data.Comment
+import com.example.plant.databinding.ItemRowCommentBinding
+import com.example.plant.ui.network.response.AnswersItem
+import com.example.plant.ui.network.response.DataComment
+import java.text.SimpleDateFormat
+import java.util.Locale
 
-class CommentAdapter(private val comments: List<Comment>) : RecyclerView.Adapter<CommentAdapter.CommentViewHolder>() {
+class CommentAdapter : ListAdapter<AnswersItem, CommentAdapter.CommentViewHolder>(DIFF_CALLBACK) {
 
-    inner class CommentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val usernameTextView: TextView = itemView.findViewById(R.id.txt_username)
-        val timeTextView: TextView = itemView.findViewById(R.id.txtTime)
-        val commentTextView: TextView = itemView.findViewById(R.id.txtComment)
+    class CommentViewHolder(private val binding: ItemRowCommentBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(comment: AnswersItem) {
+            binding.txtUsername.text = comment.username ?: ""
+            binding.txtComment.text = comment.answer ?: ""
+            val createdAt = comment.createdAt
+            if (createdAt != null) {
+                try {
+                    val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+                    val date = inputFormat.parse(createdAt)
+                    val outputFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+                    val formattedDate = outputFormat.format(date!!)
+                    binding.txtTime.text = formattedDate
+                } catch (e: Exception) {
+                    binding.txtTime.text = "Invalid date format"
+                }
+            } else {
+                binding.txtTime.text = ""
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_row_comment, parent, false)
-        return CommentViewHolder(view)
+        val binding = ItemRowCommentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return CommentViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
-        val comment = comments[position]
-        holder.usernameTextView.text = comment.username
-        holder.timeTextView.text = comment.date
-        holder.commentTextView.text = comment.comment
+        val commentItem = getItem(position)
+        holder.bind(commentItem)
     }
 
-    override fun getItemCount(): Int {
-        return comments.size
+    companion object {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<AnswersItem>() {
+            override fun areItemsTheSame(oldItem: AnswersItem, newItem: AnswersItem): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: AnswersItem, newItem: AnswersItem): Boolean {
+                return oldItem == newItem
+            }
+        }
     }
 }

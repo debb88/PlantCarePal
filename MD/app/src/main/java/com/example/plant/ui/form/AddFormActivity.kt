@@ -1,13 +1,25 @@
 package com.example.plant.ui.form
 
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import com.example.plant.R
+import com.example.plant.ViewModelFactory
 import com.example.plant.databinding.ActivityAddFormBinding
-import com.example.plant.databinding.ActivityDetailFormBinding
+import com.example.plant.pref.DataStoreViewModel
+import com.example.plant.pref.UserPreference
+import com.example.plant.pref.dataStore
+import com.example.plant.ui.network.ApiConfig
+import com.example.plant.ui.network.response.AddForumResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class AddFormActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddFormBinding
@@ -23,6 +35,51 @@ class AddFormActivity : AppCompatActivity() {
         }
         binding.imgBack.setOnClickListener{
             onBackPressed()
+        }
+        binding.btnSubmitQuestion.setOnClickListener {
+            val pref = UserPreference.getInstance(this.dataStore)
+            val datastoreViewModel = ViewModelProvider(this, ViewModelFactory(pref)).get(
+                DataStoreViewModel::class.java
+            )
+
+            datastoreViewModel.getTokenKey().observe(this) { token -> // Access the token
+                val title = binding.editTitleQuestion.text.toString()
+                val question = binding.editQuestion.text.toString()
+                val apiService = ApiConfig.getApiService()
+                showLoading(true)
+                val authToken = "Bearer $token"
+
+                val call = apiService.addForum(authToken, title, question)
+                call.enqueue(object : Callback<AddForumResponse> {
+                    override fun onResponse(
+                        call: Call<AddForumResponse>,
+                        response: Response<AddForumResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            showLoading(false)
+                            val responseBody = response.body()
+                            Toast.makeText(this@AddFormActivity, responseBody?.message, Toast.LENGTH_SHORT).show()
+                            finish()
+                        } else {
+                            showLoading(false)
+                            Log.e("AddFormActivity", "Error creating forum: ${response.message()}")
+                        }
+                    }
+
+                    override fun onFailure(call: Call<AddForumResponse>, t: Throwable) {
+                        showLoading(false)
+                        Log.e("AddFormActivity", "Network failure: ${t.message}")
+                    }
+                })
+            }
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
         }
     }
 }

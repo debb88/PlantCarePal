@@ -2,29 +2,39 @@ package com.example.plant.ui.guidance
 
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.plant.ListGuidance
+import com.bumptech.glide.Glide
 import com.example.plant.databinding.ItemRowGuidanceBinding
 import com.example.plant.databinding.ItemRowHistoryBinding
 import com.example.plant.ui.history.HistoryAdapter
+import com.example.plant.ui.network.response.DataGuide
 
-class GuidanceAdapter : ListAdapter<ListGuidance, GuidanceAdapter.ListViewHolder>(DIFF_CALLBACK){
+class GuidanceAdapter : ListAdapter<DataGuide, GuidanceAdapter.ListViewHolder>(DIFF_CALLBACK){
     class ListViewHolder(val binding: ItemRowGuidanceBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(guidance: ListGuidance){
-            binding.imgGuide.setImageResource(guidance.photo)
+        fun bind(guidance: DataGuide){
             binding.txtTitle.text = "${guidance.title}"
-            binding.txtTime.text = "${guidance.time}"
+
+            Glide.with(itemView.context)
+                .load("${guidance.imageUrl}")
+                .into(binding.imgGuide)
+            binding.txtTime.text = "${guidance.publishedAt}"
+
+
 
             itemView.setOnClickListener {
                 val intentDetailGuide = Intent(itemView.context, DetailGuidanceActivity::class.java)
+                intentDetailGuide.putExtra(DetailGuidanceActivity.ID, "${guidance.id}")
                 itemView.context.startActivity(intentDetailGuide)
             }
         }
     }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val binding = ItemRowGuidanceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -37,17 +47,18 @@ class GuidanceAdapter : ListAdapter<ListGuidance, GuidanceAdapter.ListViewHolder
     }
 
     companion object{
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListGuidance>() {
+        const val TAG = "guide id"
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DataGuide>() {
             override fun areItemsTheSame(
-                oldItem: ListGuidance,
-                newItem: ListGuidance
+                oldItem: DataGuide,
+                newItem: DataGuide
             ): Boolean {
                 return oldItem == newItem
             }
 
             override fun areContentsTheSame(
-                oldItem: ListGuidance,
-                newItem: ListGuidance
+                oldItem: DataGuide,
+                newItem: DataGuide
             ): Boolean {
                 return oldItem == newItem
             }

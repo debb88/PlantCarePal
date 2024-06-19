@@ -9,12 +9,23 @@
     app:layoutDescription="@xml/activity_login_scene"
     tools:context=".ui.login.LoginActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/txt_Welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome"
-        android:textSize="60dp"
+        android:textSize="60sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -41,7 +52,22 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="parent" />
 
-    <EditText
+<!--    <EditText-->
+<!--        android:id="@+id/edtTextUsername"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_marginStart="32dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:background="@drawable/custom_input"-->
+<!--        android:drawableStart="@drawable/custom_user_icon"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Enter Your Username"-->
+<!--        android:inputType="text"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/banner"-->
+<!--        app:layout_constraintStart_toStartOf="@id/banner"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textUsername" />-->
+
+    <com.example.plant.custom.CustomUsernameLayout
         android:id="@+id/edtTextUsername"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -54,9 +80,23 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="@id/banner"
         app:layout_constraintStart_toStartOf="@id/banner"
-        app:layout_constraintTop_toBottomOf="@+id/textUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/textUsername"/>
 
-    <EditText
+<!--    <EditText-->
+<!--        android:id="@+id/edtTextPass"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_marginStart="32dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:background="@drawable/custom_input"-->
+<!--        android:drawableStart="@drawable/custom_lock_icon"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Enter Your Password"-->
+<!--        android:inputType="textPassword"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/banner"-->
+<!--        app:layout_constraintStart_toStartOf="@id/banner"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textPassword" />-->
+    <com.example.plant.custom.CustomPasswordLayout
         android:id="@+id/edtTextPass"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -69,7 +109,8 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@id/banner"
         app:layout_constraintStart_toStartOf="@id/banner"
-        app:layout_constraintTop_toBottomOf="@+id/textPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/textPassword"/>
+
 
     <Button
         android:id="@+id/loginButton"
@@ -121,4 +162,6 @@
         android:textColor="@color/hyperlinkColor"
         app:layout_constraintLeft_toRightOf="@id/txt_login_1"
         app:layout_constraintTop_toBottomOf="@id/loginButton" />
+
+
 </androidx.constraintlayout.motion.widget.MotionLayout>

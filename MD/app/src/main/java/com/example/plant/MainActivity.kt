@@ -2,19 +2,23 @@ package com.example.plant
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.OnBackPressedCallback
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.plant.databinding.ActivityMainBinding
-import com.example.plant.ui.WelcomeActivity
+import com.example.plant.pref.DataStoreViewModel
+import com.example.plant.pref.UserPreference
+import com.example.plant.pref.dataStore
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    lateinit var navView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        navView = binding.navView
 
         //Close Application Function
         onBackPressedDispatcher.addCallback(this@MainActivity, object: OnBackPressedCallback(true){
@@ -42,12 +46,47 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_Home, R.id.navigation_History, R.id.navigation_Camera, R.id.navigation_Form, R.id.navigation_Guidance
             )
         )
-        //setupActionBarWithNavController(navController, appBarConfiguration)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        navView.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.navigation_Home -> {
+                    Log.d("CONSOLE", it.itemId.toString())
+                    //navView.selectedItemId = R.id.navigation_home
+                    navController.navigate(R.id.navigation_Home)
+                    true
+                }
+                R.id.navigation_History -> {
+                    navController.navigate(R.id.navigation_History)
+                    true
+                }
+                R.id.navigation_Camera -> {
+                    navController.navigate(R.id.navigation_Camera)
+                    true
+                }
+                R.id.navigation_Form -> {
+                    navController.navigate(R.id.navigation_Form)
+                    true
+                }
+                R.id.navigation_Guidance -> {
+                    navController.navigate(R.id.navigation_Guidance)
+                    true
+                }
+                else -> false
+            }
+        }
 
-//        binding.btnIntent.setOnClickListener {
-//            val intent = Intent(this, WelcomeActivity::class.java)
-//            startActivity(intent)
-//        }
+
+        val pref = UserPreference.getInstance(application.dataStore)
+        val datastoreViewModel = ViewModelProvider(this, ViewModelFactory(pref)).get(
+            DataStoreViewModel::class.java)
+
+        datastoreViewModel.getTokenKey().observe(this){
+            Log.d(TAG, "token: $it")
+        }
+    }
+
+    companion object{
+        const val TAG = "MainActivity"
     }
 }

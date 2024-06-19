@@ -7,10 +7,17 @@ import android.os.Handler
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
+import com.example.plant.MainActivity
 import com.example.plant.R
+import com.example.plant.ViewModelFactory
 import com.example.plant.databinding.ActivityWelcomeBinding
+import com.example.plant.pref.DataStoreViewModel
+import com.example.plant.pref.UserPreference
+import com.example.plant.pref.dataStore
 import com.example.plant.ui.login.LoginActivity
 import com.example.plant.ui.register.RegisterActivity
 
@@ -18,6 +25,8 @@ class WelcomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWelcomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Thread.sleep(3000)
+        installSplashScreen()
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -31,6 +40,16 @@ class WelcomeActivity : AppCompatActivity() {
             startActivity(intentRegister)
         }
 
+        val pref = UserPreference.getInstance(this.dataStore)
+        val datastoreViewModel = ViewModelProvider(this, ViewModelFactory(pref)).get(
+            DataStoreViewModel::class.java)
+
+        datastoreViewModel.getValid().observe(this){
+            if(it){
+                val intenMain = Intent(this, MainActivity::class.java)
+                startActivity(intenMain)
+            }
+        }
         playAnimation()
     }
 

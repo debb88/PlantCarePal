@@ -12,6 +12,8 @@
     <string name="time">dd-mm-yyyy</string>
     <string name="qna_title">QNA TItle</string>
 
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_form_fragment">Hello form fragment</string>
     <string name="hello_history_fragment">Hello history fragment</string>
@@ -80,6 +82,10 @@
     <string name="hyperlinkClick">Login Here</string>
     <string name="txt_login">Don\'t have an account?</string>
     <string name="loginitent"><u>Register</u></string>
+    <string name="seeAll"><u>SeeAll</u></string>
+
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Description">Description</string>
@@ -97,6 +103,15 @@
     <string name="seeall">SeeAll</string>
     <string name="step1">Step1</string>
     <string name="step2">Step2</string>
+    <string name="step3">Step3</string>
+    <string name="step4">Step4</string>
+    <string name="step5">Step5</string>
     <string name="content_detail_guide">It is a long established fact that a reader will be distracted by  the readable content of a page when looking at its layout. </string>
+    <string name="empty_image_warning">image is empty</string>
+    <string name="comments">Comments</string>
+    <string name="qna_desc">qna Desc</string>
+    <string name="confirm_delete">Are you sure you want to delete this history?</string>
+    <string name="failure_response">Something Unexpected Happend, Please try again later\n</string>
+
 
 </resources>
