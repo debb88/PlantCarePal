@@ -4,7 +4,7 @@
 
 </div>
 
-PlantCarePal is
+PlantCarePal is a Mobile App that is for users who are interested in decorative plans. This app will help users to find information for their decorative plants easily, and with the help of our Plant Health Scanner, they can easily tackle any problems with their plants if it ever infected or attacked by pests.
 
 
 ## PlantCarePal Teams - C241-PS497
@@ -39,11 +39,13 @@ PlantCarePal is
 ## UI/UX
 [PlantCarePal UI Design](https://www.figma.com/design/qSRxvICZxb3N3lFodDNiRN/Mockup-Capstone?node-id=0-1&t=N2cDs5MrmuClcNSu-1)
 
+<br>
+
 # Installing PlantCarePale API Server
 These are the steps in installing PlantCarePal API
 
 ## Install Requirements
-[Node.js and NPM]()
+[Node.js and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
 ## Run API Locally
 
