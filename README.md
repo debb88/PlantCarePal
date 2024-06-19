@@ -55,7 +55,7 @@ These are the steps in installing PlantCarePal API
 <br>
 
 # PlantCarePal API Reference
-## Authentication
+### Authentication
 | Endpoint | Method | Parameter | Type | Description |
 |---------|---------|---------|---------|---------|
 | /register | POST | ``` application/json ```  | ``` String ```  |    |
