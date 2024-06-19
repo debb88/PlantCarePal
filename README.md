@@ -99,6 +99,7 @@ These are the steps in installing PlantCarePal API
    EXPOSE [PORT]
    CMD [ "npm", "run", "start"]
    ```
+   Replace [PORT] with the port you want
    
 5. **Create an Artifact Registry**
    ```sh
