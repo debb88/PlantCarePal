@@ -95,8 +95,9 @@ These are the steps in installing PlantCarePal API
 ```
 | Endpoint          | Method | Payload            | Description |
 |-------------------|--------|--------------------|-------------|
-| /guides         | GET    | -                  | This endpoint retrieves all available guides. Authentication with a JWT token is required. |
-| /guides/{id}    | GET    | -                  | This endpoint retrieves a specific guide by its ID. Authentication with a JWT token is required. |
+| `/guides`         | GET    | -                  | This endpoint retrieves all available guides. Authentication with a JWT token is required. |
+| `/guides/{id}`    | GET    | -                  | This endpoint retrieves a specific guide by its ID. Authentication with a JWT token is required. |
+
 
 
 
