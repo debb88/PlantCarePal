@@ -71,6 +71,13 @@ These are the steps in installing PlantCarePal API
 |---------|---------|---------|---------|---------|
 | /detect | POST | ``` multipart/form-data ```  | ``` File ```  |  Detects diseases in an uploaded image. Requires JWT token for authentication.  |
 | /detect/histories |  GET | -  |  - | Retrieves all detection histories for the authenticated user. Requires JWT token for authentication.  |
-| `/detect/histories/{id}`  | GET    | `?id=<id>`                         | `String`           | Retrieves a specific detection history by ID. Requires JWT token for authentication. |
-| `/detect/histories/{id}`  | DELETE | `?id=<id>`                         | `String`           | Deletes a specific detection history by ID. Requires JWT token for authentication. |
-| `/detect/histories`       | DELETE | -                            | -                  | Deletes all detection histories for the authenticated user. Requires JWT token for authentication. |
+| /detect/histories/{id}  | GET    | `?id=<id>`                         | `String`           | Retrieves a specific detection history by ID. Requires JWT token for authentication. |
+| /detect/histories/{id}  | DELETE | `?id=<id>`                         | `String`           | Deletes a specific detection history by ID. Requires JWT token for authentication. |
+| /detect/histories       | DELETE | -                            | -                  | Deletes all detection histories for the authenticated user. Requires JWT token for authentication. |
+
+### Forum
+```forum
+/forum
+```
+
+
