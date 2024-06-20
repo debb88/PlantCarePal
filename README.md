@@ -34,7 +34,7 @@ PlantCarePal is a Mobile App that is for users who are interested in decorative 
 
 | Post Photo Page | Analyze Page | Analyze Result Page | Guides Page | Guide Detail Page |
 |---------|---------|---------|---------|---------|
-| ![post-photo](https://github.com/debb88/PlantCarePal/assets/120155046/b3c65374-1a8b-48a6-93de-f23bfdc70abe) |   |  ![analyze-result](https://github.com/debb88/PlantCarePal/assets/120155046/7f109343-aebc-4be0-9eef-d4d967830d5d) |   |   |
+| ![post-photo](https://github.com/debb88/PlantCarePal/assets/120155046/b3c65374-1a8b-48a6-93de-f23bfdc70abe) | ![analyze-page](https://github.com/debb88/PlantCarePal/assets/120155046/e5a086d8-37a0-4c51-b58e-a2daa359ca8f)  |  ![analyze-result](https://github.com/debb88/PlantCarePal/assets/120155046/7f109343-aebc-4be0-9eef-d4d967830d5d) |   |   |
 
 </div>
 
