@@ -18,7 +18,7 @@ PlantCarePal is a Mobile App that is for users who are interested in decorative 
 | Debora Meiliana | Cloud Computing | C242D4KX1012 | [LinkedIn](http://www.linkedin.com/in/debora-meiliana-3b41352a3) & [GitHub](https://github.com/debb88 ) |
 | Muhammad Naufalaudi Syaliandra | Cloud Computing | C006D4KY0154 | [LinkedIn](https://www.linkedin.com/in/naufalsyaliandra/) & [GitHub](https://github.com/naufalliandra) |
 | Andreas Matthew | Mobile Development | A242D4KY3968 | [LinkedIn](https://www.linkedin.com/in/andreas-matthew-698b8025b/) & [GitHub](https://github.com/Nox-Matt) |
-| Willyam | Mobile Development | A242D4KY4312 | [LinkedIn]() & [GitHub]() |
+| Willyam | Mobile Development | A242D4KY4312 | [LinkedIn](www.linkedin.com/in/willyam-senjaya-a33411239) & [GitHub](https://github.com/Willyam22) |
 
 </div>
 
