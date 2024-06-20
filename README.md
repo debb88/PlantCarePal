@@ -30,11 +30,11 @@ PlantCarePal is a Mobile App that is for users who are interested in decorative 
 
 | Splash Screen | Opening Page | Register Page | Login Page | Home Page |
 |---------|---------|---------|---------|---------|
-|  |   | ![register](https://github.com/debb88/PlantCarePal/assets/120155046/9d59dfd1-cde2-40cd-9070-d6384fd56dba)  |   |   |
+|  |   | ![register](https://github.com/debb88/PlantCarePal/assets/120155046/9d59dfd1-cde2-40cd-9070-d6384fd56dba)  | ![login](https://github.com/debb88/PlantCarePal/assets/120155046/493f58db-af05-4e2c-93a1-732d1fc679b6)  | ![homepage](https://github.com/debb88/PlantCarePal/assets/120155046/8be5e38c-bc27-4cfa-b841-db61f6095812)  |
 
-| Detect Page | Analyze Result Page | History Page | Guides Page | Guide Detail Page |
+| Post Photo Page | Analyze Page | Analyze Result Page | Guides Page | Guide Detail Page |
 |---------|---------|---------|---------|---------|
-|  |   |   |   |   |
+| ![post-photo](https://github.com/debb88/PlantCarePal/assets/120155046/b3c65374-1a8b-48a6-93de-f23bfdc70abe) |   |  ![analyze-result](https://github.com/debb88/PlantCarePal/assets/120155046/7f109343-aebc-4be0-9eef-d4d967830d5d) |   |   |
 
 </div>
 
