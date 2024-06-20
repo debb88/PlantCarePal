@@ -30,7 +30,7 @@ PlantCarePal is a Mobile App that is for users who are interested in decorative 
 
 | Splash Screen | Opening Page | Register Page | Login Page | Home Page |
 |---------|---------|---------|---------|---------|
-|  |   |   |   |   |
+|  |   | ![register](https://github.com/debb88/PlantCarePal/assets/120155046/9d59dfd1-cde2-40cd-9070-d6384fd56dba)  |   |   |
 
 | Detect Page | Analyze Result Page | History Page | Guides Page | Guide Detail Page |
 |---------|---------|---------|---------|---------|
