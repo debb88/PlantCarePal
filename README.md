@@ -13,7 +13,7 @@ PlantCarePal is a Mobile App that is for users who are interested in decorative 
 | Nama | Path | Bangkit ID | Social Media |
 |---------|---------|---------|---------|
 | Rio Rezky Seleng | Machine Learning  | M004D4KY2871  | [LinkedIn]() & [GitHub]()  |
-| Mohd Alfitra Syauqi | Machine Learning  | M006D4KY2753  | [LinkedIn]() & [GitHub]()  |
+| Mohd Alfitra Syauqi | Machine Learning  | M006D4KY2753  | [LinkedIn](www.linkedin.com/in/mohdalfitrasyauqi) & [GitHub](https://github.com/fitrasyauqi)  |
 | Virandy Bagaskara Syahwanto | Machine Learning  | M006D4KY1786  | [LinkedIn]() & [GitHub]()  |
 | Debora Meiliana | Cloud Computing | C242D4KX1012 | [LinkedIn](http://www.linkedin.com/in/debora-meiliana-3b41352a3) & [GitHub](https://github.com/debb88 ) |
 | Muhammad Naufalaudi Syaliandra | Cloud Computing | C006D4KY0154 | [LinkedIn](https://www.linkedin.com/in/naufalsyaliandra/) & [GitHub](https://github.com/naufalliandra) |
