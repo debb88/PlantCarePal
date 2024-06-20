@@ -32,9 +32,9 @@ PlantCarePal is a Mobile App that is for users who are interested in decorative 
 |---------|---------|---------|---------|---------|
 |  |   | ![register](https://github.com/debb88/PlantCarePal/assets/120155046/9d59dfd1-cde2-40cd-9070-d6384fd56dba)  | ![login](https://github.com/debb88/PlantCarePal/assets/120155046/493f58db-af05-4e2c-93a1-732d1fc679b6)  | ![homepage](https://github.com/debb88/PlantCarePal/assets/120155046/8be5e38c-bc27-4cfa-b841-db61f6095812)  |
 
-| Post Photo Page | Analyze Page | Analyze Result Page | Guides Page | Guide Detail Page |
+| Post Photo Page | Analyze Page | Analyze Result Page | History Page | Guide Page |
 |---------|---------|---------|---------|---------|
-| ![post-photo](https://github.com/debb88/PlantCarePal/assets/120155046/b3c65374-1a8b-48a6-93de-f23bfdc70abe) | ![analyze-page](https://github.com/debb88/PlantCarePal/assets/120155046/e5a086d8-37a0-4c51-b58e-a2daa359ca8f)  |  ![analyze-result](https://github.com/debb88/PlantCarePal/assets/120155046/7f109343-aebc-4be0-9eef-d4d967830d5d) |   |   |
+| ![post-photo](https://github.com/debb88/PlantCarePal/assets/120155046/b3c65374-1a8b-48a6-93de-f23bfdc70abe) | ![analyze-page](https://github.com/debb88/PlantCarePal/assets/120155046/e5a086d8-37a0-4c51-b58e-a2daa359ca8f)  |  ![analyze-result](https://github.com/debb88/PlantCarePal/assets/120155046/7f109343-aebc-4be0-9eef-d4d967830d5d) | ![history](https://github.com/debb88/PlantCarePal/assets/120155046/2dc7078d-ca96-4daa-8252-807998b97412)  |   |
 
 </div>
 
